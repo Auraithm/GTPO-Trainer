@@ -58,6 +58,7 @@ EVAL_TEMPERATURE=${EVAL_TEMPERATURE:-1.0}
 EVAL_EVERY=${EVAL_EVERY:-0}
 KL=${KL:-0}
 SHRINK=${SHRINK:-1}
+THINK=${THINK:-False}
 LR=${LR:-1e-6}
 BS=${BS:-1}
 CUSOR=${CUSOR:-0}
@@ -85,6 +86,7 @@ accelerate launch \
   training.batch_size_lm=${BS} \
   training.num_iterations=${ITERATIONS} \
   training.collate=${COLLATE} \
+  rollout.start_with_think=${THINK} \
   rollout.num_task_per_step=${NUM_TASK_PER_STEP} \
   rollout.num_response_per_task=${NUM_RESPONSE_PER_TASK} \
   training.beta=${KL} \

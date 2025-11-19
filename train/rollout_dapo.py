@@ -198,12 +198,10 @@ def rollout_sampling(dataset_name, epoch, config, model_path, tokenizer, acceler
     prompts_all = ds['question']
     gts_all = ds['ground_truth_answer']
 
-    if not start_with_think:
-        reason_prompt_tpl = "<|im_start|>user\n{problem}\nPlease reason step by step, and put your final answer within $\\boxed{{}}$.<|im_end|>\n<|im_start|>assistant\n"
-    else:
-        reason_prompt_tpl = "<|im_start|>user\nYou need to put your final answer in \\boxed{{}}. This is the problem:\n{problem}<|im_end|>\n<|im_start|>assistant\n"
+    reason_prompt = "<|im_start|>user\n{problem}\nPlease reason step by step, and put your final answer within $\\boxed{{}}$.<|im_end|>\n<|im_start|>assistant\n"
+
     if start_with_think:
-        reason_prompt_tpl = reason_prompt_tpl + "<think>"
+        reason_prompt = reason_prompt + "<think>"
 
     # Build pool of all (idx, (prompt, gt))
     all_data = list(enumerate(zip(prompts_all, gts_all)))
@@ -592,14 +590,13 @@ def rollout_sampling_eval(dataset_name, epoch, config, model_path, tokenizer, ac
     prompts = ds['question']
     gts = ds['ground_truth_answer']
 
-    if not start_with_think:
-        reason_prompt = "<|im_start|>user\n{problem}\nPlease reason step by step, and put your final answer within $\\boxed{{}}$.<|im_end|>\n<|im_start|>assistant\n"
-    else:
-        reason_prompt =  "<|im_start|>user\nYou need to put your final answer in \\boxed{{}}. This is the problem:\n{problem}<|im_end|>\n<|im_start|>assistant\n"
-    
+    reason_prompt = "<|im_start|>user\n{problem}\nPlease reason step by step, and put your final answer within $\\boxed{{}}$.<|im_end|>\n<|im_start|>assistant\n"
+
+    # reason_prompt = "<|im_start|>user\n{problem}\nPlease reason step by step in <think>...</think>, and put your final answer within $\\boxed{{}}$ in <answer>...</answer>.<|im_end|>\n<|im_start|>assistant\n"
     # start_with_think=True
     if start_with_think:
         reason_prompt = reason_prompt + "<think>"
+        
     # 构建带原始索引的数据
     all_data = list(enumerate(zip(prompts, gts))) # [(idx, (prompt, gt)), ...]
     # random.seed(config.training.seed+epoch)

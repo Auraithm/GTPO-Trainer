@@ -13,4 +13,5 @@ export TOP_K=50
 export TOP_P=1.0
 export DYNAMIC_THRESHOLD=0.9
 export DO_SAMPLE=True
+export THINK=False
 bash scripts/eval_template.sh

@@ -215,6 +215,15 @@ bash examples/rl.sh
 
 We would like to express our gratitude to the following works ([SDAR](https://github.com/JetAstra/SDAR), [dllm-RL](https://github.com/Gen-Verse/dLLM-RL), [lmdeploy](https://github.com/InternLM/lmdeploy)) for providing important theoretical foundations and inspiration for DiRL.
 
+## 💬 Community
+
+Join our WeChat group to discuss DLLM training and related topics:
+
+<p align="center">
+  <img src="static/images/qr_code.jpg" alt="WeChat QR Code" width="400">
+</p>
+
+
 ## 📧 Contact
 
 For issues or inquiries:
