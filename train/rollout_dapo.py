@@ -302,7 +302,7 @@ def rollout_sampling(dataset_name, epoch, config, model_path, tokenizer, acceler
         idx_pairs = [all_data[i] for i in batch_indices]
         _, prompt_gt_pairs = zip(*idx_pairs)
         batch_prompts, batch_gts = zip(*prompt_gt_pairs)
-        prompts_list = [reason_prompt_tpl.format(problem=p) for p in batch_prompts]
+        prompts_list = [reason_prompt.format(problem=p) for p in batch_prompts]
 
         # 统一调用 sample 函数，都传 config 和 accelerator
         outputs = sample(model_path, backend_config, gen_config, prompts_list, k_sample, config, accelerator)
