@@ -41,7 +41,7 @@ export PYTHONDONTWRITEBYTECODE=1
 export TRANSFORMERS_OFFLINE=1
 export HF_HUB_OFFLINE=1
 export HF_HOME=/inspire/hdd/global_user/liuxiaoran-240108120089/zhuying/cache/${SCRIPT_NAME}
-export RESUME_FROM_STEP=${RESUME_FROM_STEP:-None}
+export RESUME_FROM_STEP=${RESUME_FROM_STEP:-0}
 export RESUME_BATCH_COUNT=${RESUME_BATCH_COUNT:-0}
 
 echo "[NUM NODES: $NUM_MACHINES] SFT training start ..."
